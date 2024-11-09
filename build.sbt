@@ -8,8 +8,22 @@ lazy val root = (project in file("."))
     idePackagePrefix := Some("com.tomtom.adeagg")
   )
 
-libraryDependencies += "org.locationtech.jts" % "jts-core" % "1.20.0"
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.19" % Test
-libraryDependencies += "io.delta" %% "delta-core" % "2.4.0" % "provided"
-libraryDependencies += "org.apache.spark" %% "spark-sql" % "3.5.0" % "provided"
+val sparkVersion = "3.5.2"
+val hadoopVersion = "3.3.6"
+
+libraryDependencies ++= Seq(
+  "org.locationtech.jts" % "jts-core" % "1.20.0",
+  "org.scalatest" %% "scalatest" % "3.2.19" % Test,
+  "io.delta" %% "delta-spark" % "3.1.0",
+  "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
+  "org.apache.spark" %% "spark-core" % sparkVersion % "provided",
+//  "org.apache.spark" %% "spark-hive" % sparkVersion % "provided",
+//  "org.apache.spark" %% "spark-catalyst" % sparkVersion % "provided",
+  "io.netty" % "netty-all" % "4.1.70.Final",
+  "org.apache.hadoop" % "hadoop-common" % hadoopVersion,
+//  "org.apache.hadoop" % "hadoop-client" % hadoopVersion,
+  "com.google.guava" % "guava" % "31.1-jre"
+)
+
+
 
